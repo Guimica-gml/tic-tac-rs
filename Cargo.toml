@@ -1,0 +1,12 @@
+[package]
+name = "tic-tac-rs"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+termion = "2.0.1"
+
+[dependencies.sdl2]
+version = "0.35.2"
+default-features = false
+features = ["ttf"]
