@@ -10,8 +10,8 @@ use sdl2::mouse::MouseButton;
 use super::tac::*;
 use super::ai::*;
 
-const WINDOW_WIDTH: u32 = 800;
-const WINDOW_HEIGHT: u32 = 800;
+const WINDOW_WIDTH: u32 = 600;
+const WINDOW_HEIGHT: u32 = 600;
 
 struct PopUp {
     text: String,
@@ -187,8 +187,8 @@ pub fn main() -> Result<(), String> {
         }
 
         if pop_up.visible {
-            let popup_width: u32 = 725;
-            let popup_height: u32 = 325;
+            let popup_width: u32 = (WINDOW_WIDTH as f32 * 0.8) as u32;
+            let popup_height: u32 = (WINDOW_HEIGHT as f32 * 0.4) as u32;
             let popup_x = ((WINDOW_WIDTH - popup_width) / 2) as i32;
             let popup_y = ((WINDOW_HEIGHT - popup_height) / 2) as i32;
 
