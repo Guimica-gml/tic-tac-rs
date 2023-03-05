@@ -1,8 +1,9 @@
 use sdl2;
 use sdl2::ttf;
 use sdl2::ttf::Font;
-use sdl2::event::Event;
 use sdl2::rect::Rect;
+use sdl2::event::Event;
+use sdl2::rwops::RWops;
 use sdl2::video::Window;
 use sdl2::render::Canvas;
 use sdl2::mouse::MouseButton;
@@ -12,6 +13,8 @@ use super::ai::*;
 
 const WINDOW_WIDTH: u32 = 600;
 const WINDOW_HEIGHT: u32 = 600;
+
+const FONT_BYTES: &[u8] = include_bytes!("../font/Iosevka Nerd.ttf");
 
 struct PopUp {
     text: String,
@@ -121,8 +124,8 @@ pub fn main() -> Result<(), String> {
     let mut ai = TicTacToeAi::new();
 
     let mut pop_up = PopUp::new();
-    let font = ttf_context.load_font("./font/Iosevka Nerd.ttf", 76)?;
-    let small_font = ttf_context.load_font("./font/Iosevka Nerd.ttf", 32)?;
+    let font = ttf_context.load_font_from_rwops(RWops::from_bytes(FONT_BYTES)?, 76)?;
+    let small_font = ttf_context.load_font_from_rwops(RWops::from_bytes(FONT_BYTES)?, 32)?;
 
     let field_width = WINDOW_WIDTH as i32 / tic_tac_toe.width() as i32;
     let field_height = WINDOW_HEIGHT as i32 / tic_tac_toe.height() as i32;
